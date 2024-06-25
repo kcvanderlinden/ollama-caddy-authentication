@@ -5,6 +5,7 @@ The goal of this repository is to provide a simple and secure solution for handl
 
 ## Installation
 
+* clone the repo with ```git clone https://github.com/kcvanderlinden/ollama-caddy-authentication.git```
 * The image installs necessary dependencies using `apt-get`.
 * It downloads the latest version of Caddy from GitHub and extracts it to `/usr/bin`.
 
