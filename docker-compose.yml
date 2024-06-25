@@ -1,0 +1,15 @@
+name: ollama-bearer-auth
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: custom_ollama-bearer-auth:latest
+    ports:
+      - "8081:8081"
+    env_file:  # This directive is used to specify a file to import environment variables from
+      - .env.local
+    volumes:
+      - ~/.ollama:/root/.ollama
+    restart: unless-stopped
