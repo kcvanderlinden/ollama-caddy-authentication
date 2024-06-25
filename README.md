@@ -5,14 +5,19 @@ The goal of this repository is to provide a simple and secure solution for handl
 
 ## Installation
 
+**Prerequisites**
+
+* You must have a running ollama instance
+* You must have Docker installed with docker-compose
+* You must generate your own Ollama API key and provide it in the Dockerfile.
+* The `Caddyfile` is required for configuring Caddy's behavior.
+
+**Downloading the files**
 * clone the repo with ```git clone https://github.com/kcvanderlinden/ollama-caddy-authentication.git```
-* The image installs necessary dependencies using `apt-get`.
-* It downloads the latest version of Caddy from GitHub and extracts it to `/usr/bin`.
 
 **Configuration**
 
-* Copies a `Caddyfile` file into the container.
-* Sets environment variables for Ollama API key and endpoint.
+* Sets environment variables for Ollama API key and endpoint in de Dockerfile.
 
 **Caddyfile Configuration**
 
@@ -49,18 +54,17 @@ This Caddyfile configuration:
 * If authorized, proxies requests to the Ollama API endpoint using the provided API key and endpoint
 * If unauthorized, returns a 401 Unauthorized response
 
+**Build Docker container**
+* from the directory where the files are located run ```docker-compose build``` in terminal. This builds the container.
+* Once you've built the Docker image, you can run it using the following command ```docker-compose up```
+
+
 **Startup**
 
 * Loads environment variables from the `.env.local` file at runtime.
 * Exposes port 80 for Caddy to listen on.
 * Copies a script (`start_services.sh`) to start both Ollama and Caddy services.
 * Sets the entrypoint of the container to run `caddy` with the configuration file.
-
-**Prerequisites**
-
-* You must have a running ollama instance
-* You must generate your own Ollama API key and provide it in the Dockerfile.
-* The `Caddyfile` is required for configuring Caddy's behavior.
 
 ## Generating a secure API Key
 
