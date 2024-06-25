@@ -1,4 +1,4 @@
-# ollama behind caddy authentication
+# Ollama behind caddy authentications
 **Goal**
 
 The goal of this repository is to provide a simple and secure solution for handling incoming requests to an Ollama API by using Caddy as a reverse proxy.
